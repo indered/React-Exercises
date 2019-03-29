@@ -9,11 +9,17 @@ class Menu extends Component {
     dishes: sampleDishes
   };
 
+  add = (event, newDish) => {
+    event.preventDefault();
+    this.setState({
+      dishes: [...this.state.dishes, newDish]
+    });
+  };
+
   render() {
-    console.log(this.state.dishes);
     return (
       <div className="App">
-        <Dishlist dishes={this.state.dishes} />
+        <Dishlist dishes={this.state.dishes} add={this.add} />
       </div>
     );
   }
