@@ -6,7 +6,7 @@ import Counter from './components/counter';
 class App extends Component {
 
   state = {
-    counters: [0, 0, 0, 0]
+    counters: [0, 0, 0]
   }
 
   inCounter = index => {
