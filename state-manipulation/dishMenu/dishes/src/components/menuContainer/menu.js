@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./main.css";
 import sampleDishes from "./sampleDishes";
 import Dishlist from "../dishes/dish";
-import { from } from "rxjs";
 
 class Menu extends Component {
   state = {
@@ -11,14 +10,15 @@ class Menu extends Component {
 
   add = (event, newDish) => {
     event.preventDefault();
+    this.state.dishes.push(newDish);
     this.setState({
-      dishes: [...this.state.dishes, newDish]
+      dishes: this.state.dishes
     });
   };
 
   render() {
     return (
-      <div className="App">
+      <div className="menu">
         <Dishlist dishes={this.state.dishes} add={this.add} />
       </div>
     );

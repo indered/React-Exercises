@@ -9,6 +9,7 @@ li {
   padding: 10px;
   line-height: 2px;
   border: 1px solid rgb(17, 51, 44);
+  border-radius: 5px;
   width: 200px;
   margin-bottom: 5px;
   background: rgb(139, 241, 182);
@@ -23,7 +24,8 @@ li:hover {
   width: 300px;
   border: 1px solid rgb(165, 172, 169);
   border-radius: 5px;
-  margin: 0 auto;
+  margin: 20px auto;
+  padding: 10px 0;
 }
 form label {
   margin-right: 10px;
@@ -45,4 +47,5 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background: rgb(17, 51, 44);
   color: rgb(139, 241, 182);
+  cursor: pointer;
 }

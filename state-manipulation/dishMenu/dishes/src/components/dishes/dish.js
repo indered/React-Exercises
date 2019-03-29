@@ -2,16 +2,20 @@ import React, { Component } from "react";
 import "./main.css";
 
 class Dishlist extends Component {
-  constructor(props) {
-    super(props);
-    this.newDish = {};
-    this.handleChange = event => {
-      this.newDish[event.target.name] = event.target.value;
-    };
-    this.clickHandler = dish => {
-      console.log(dish);
-    };
-  }
+  state = {
+    newDish: {}
+  };
+  handleChange = event => {
+    let newDish = {};
+    newDish[event.target.name] = event.target.value;
+
+    this.setState({
+      newDish: newDish
+    });
+  };
+  clickHandler = dish => {
+    console.log(dish);
+  };
 
   render() {
     let { dishes, add } = this.props;
@@ -32,7 +36,7 @@ class Dishlist extends Component {
         <div className="form">
           <form
             className="addDishForm"
-            onSubmit={event => add(event, this.newDish)}
+            onSubmit={event => add(event, this.state.newDish)}
           >
             <label>Name</label>
             <input
