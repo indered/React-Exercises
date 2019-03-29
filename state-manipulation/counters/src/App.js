@@ -6,53 +6,59 @@ import Counter from './components/counter';
 class App extends Component {
 
   state = {
-    count1: 0,
-    count2: 0,
-    count3: 0
+    counters: [0, 0, 0, 0]
   }
 
-  inCounter = (counter, count) => {
+  inCounter = index => {
+    let temp_counter = [...this.state.counters];
+    if (index) {
+      temp_counter[index]++;
+    }
+
+    else {
+      temp_counter = temp_counter.map(e => ++e);
+    }
+
     this.setState({
-      [counter]: ++count
+      counters: temp_counter
     });
 
   }
-  decCounter = (counter, count) => {
-    this.setState({
-      [counter]: --count
-    });
-  }
 
-  increaseAll = () => {
-    this.setState({
-      count1: ++this.state.count1,
-      count2: ++this.state.count2,
-      count3: ++this.state.count3
-    });
-  }
+  decCounter = index => {
+    let temp_counter = [...this.state.counters];
+    if (index) {
+      temp_counter[index]--;
+    }
 
-  decreaseAll = () => {
+    else {
+      temp_counter = temp_counter.map(e => --e);
+    }
 
     this.setState({
-      count1: --this.state.count1,
-      count2: --this.state.count2,
-      count3: --this.state.count3
+      counters: temp_counter
     });
+
   }
 
 
   render() {
-
-
-
     return (
-      <div className="App">
-        <Counter count={this.state.count1} increase={() => this.inCounter('count1', this.state.count1)} decrease={() => this.decCounter('count1', this.state.count1)} />
-        <Counter count={this.state.count2} increase={() => this.inCounter('count2', this.state.count2)} decrease={() => this.decCounter('count2', this.state.count2)} />
-        <Counter count={this.state.count3} increase={() => this.inCounter('count3', this.state.count3)} decrease={() => this.decCounter('count3', this.state.count3)} />
-        <button className='btn' onClick={this.increaseAll}>+</button>
-        <button className='btn' onClick={this.decreaseAll}>-</button>
-      </div>
+      <div className="App" >
+        {
+          this.state.counters.map((counter, index) => {
+            return (
+              <Counter
+                counter={counter}
+                index={index}
+                inCounter={this.inCounter}
+                decCounter={this.decCounter}
+              />);
+          })
+        }
+        < button className='btn' onClick={() => this.inCounter()} > +</button >
+        <button className='btn' onClick={() => this.decCounter()}>-</button>
+      </div >
     );
   }
 }

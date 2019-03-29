@@ -2,20 +2,18 @@ import React, { Component } from 'react';
 
 export default class Counter extends Component {
 
-    // state = {
-    //     count: this.props.count
-    // }
 
     render() {
-        let count = this.props.count;
-        const { increase, decrease } = this.props;
+        let { counter, index } = this.props;
+
+        const { inCounter, decCounter } = this.props;
 
 
         return (
             <div className='counter'>
-                <span>{count}</span>
-                <button className='btn' onClick={increase}>+</button>
-                <button className='btn' onClick={decrease}>-</button>
+                <span> {counter} </span>
+                <button className='btn' onClick={() => inCounter(index)}>+</button>
+                <button className='btn' onClick={() => decCounter(index)}>-</button>
             </div>
 
         );
