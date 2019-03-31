@@ -62,10 +62,17 @@ class Cart extends Component {
   removeItem = index => {
     let items = this.state.items;
     items.splice(index, 1);
+    if (items.length === 0) {
+      this.setState({
+        items: items,
+        total: 0
+      });
+    } else {
+      this.setState({
+        items: items
+      });
+    }
     this.getTotal();
-    this.setState({
-      items: items
-    });
   };
 
   getTotal = () => {
