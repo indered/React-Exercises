@@ -10,8 +10,6 @@ class Items extends Component {
     }
   };
 
-  total = 0;
-
   handldeChange = event => {
     let newItem = {};
     let formInput = event.target.value.split("-");
@@ -87,14 +85,6 @@ class Items extends Component {
             );
           })}
         </table>
-        <h2>Grand Total :
-        {this.props.items.map(item => {
-              this.total+=item.total;
-        });
-        return({this.total});
-        
-        }
-        </h2>
       </div>
     );
   }

@@ -15,7 +15,8 @@ class Cart extends Component {
       { name: "orange", qty: 1, price: 15, total: 15 },
 
       { name: "apple", qty: 4, price: 25, total: 100 }
-    ]
+    ],
+    total: 125
   };
 
   add = (event, item) => {
@@ -29,6 +30,7 @@ class Cart extends Component {
     });
     if (!flag) {
       this.state.items.push(item);
+      this.getTotal();
       this.setState({
         items: this.state.items
       });
@@ -42,6 +44,7 @@ class Cart extends Component {
     this.setState({
       items: items
     });
+    this.getTotal();
   };
 
   minusItem = index => {
@@ -49,6 +52,7 @@ class Cart extends Component {
     if (items[index].qty > 1) {
       items[index].qty -= 1;
       items[index].total = items[index].qty * items[index].price;
+      this.getTotal();
       this.setState({
         items: items
       });
@@ -57,22 +61,35 @@ class Cart extends Component {
 
   removeItem = index => {
     let items = this.state.items;
-
     items.splice(index, 1);
+    this.getTotal();
     this.setState({
       items: items
     });
   };
 
+  getTotal = () => {
+    let total = 0;
+    this.state.items.forEach(item => {
+      total += item.total;
+      this.setState({
+        total: total
+      });
+    });
+  };
+
   render() {
     return (
-      <Items
-        items={this.state.items}
-        add={this.add}
-        plusItem={this.plusItem}
-        minusItem={this.minusItem}
-        removeItem={this.removeItem}
-      />
+      <div>
+        <Items
+          items={this.state.items}
+          add={this.add}
+          plusItem={this.plusItem}
+          minusItem={this.minusItem}
+          removeItem={this.removeItem}
+        />
+        <h3>Grand Total : {this.state.total}</h3>
+      </div>
     );
   }
 }
