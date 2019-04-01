@@ -99,7 +99,10 @@ class Cart extends Component {
           minusItem={this.minusItem}
           removeItem={this.removeItem}
         />
-        <h3>Grand Total : {this.state.total}</h3>
+        <p>
+          <h3>Grand Total</h3>
+          <h3 className="grand-total"> {this.state.total}</h3>
+        </p>
       </div>
     );
   }
