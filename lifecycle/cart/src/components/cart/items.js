@@ -3,21 +3,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Items extends Component {
   state = {
+    input: "",
     item: {
       name: "",
       qty: 0,
-      price: 0
+      price: 0,
+      total: 0
     }
   };
 
   handldeChange = event => {
     let newItem = {};
-    let formInput = event.target.value.split("-");
+    let formInput = event.target.value;
+
+    formInput = event.target.value.split("-");
     newItem.name = formInput[0];
     newItem.price = formInput[1];
     newItem.qty = 1;
     newItem.total = newItem.price * newItem.qty;
+
     this.setState({
+      input: event.target.value,
       item: newItem
     });
   };
@@ -29,13 +35,19 @@ class Items extends Component {
 
         <form
           className="addItemForm"
-          onSubmit={e => this.props.add(e, this.state.item)}
+          onSubmit={e => {
+            this.setState({
+              input: ""
+            });
+            this.props.add(e, this.state.item);
+          }}
         >
           <input
             onChange={this.handldeChange}
             type="text"
             name="name"
             placeholder="Enter item and price separated by a - (hyphen)"
+            value={this.state.input}
           />
         </form>
 

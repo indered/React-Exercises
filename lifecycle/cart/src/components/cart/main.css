@@ -21,5 +21,6 @@ td {
 
 input {
   padding: 10px 20px;
-  width: 360px;
+  width: 80%;
+  border-radius: 5px;
 }

@@ -22,18 +22,22 @@ class Cart extends Component {
   add = (event, item) => {
     event.preventDefault();
     let flag = 0;
-    this.state.items.forEach(i => {
-      if (i.name === item.name) {
-        alert("this item already exists");
-        flag = 1;
-      }
-    });
-    if (!flag) {
-      this.state.items.push(item);
-      this.getTotal();
-      this.setState({
-        items: this.state.items
+    if (item.name && item.price) {
+      this.state.items.forEach(i => {
+        if (i.name === item.name) {
+          alert("this item already exists");
+          flag = 1;
+        }
       });
+      if (!flag) {
+        this.state.items.push(item);
+        this.getTotal();
+        this.setState({
+          items: this.state.items
+        });
+      }
+    } else {
+      alert("Enter values in the mentioned format.");
     }
   };
 
