@@ -1,69 +1,73 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
-import Login from "./components/login/login";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Todo from "./components/todo/todo";
+import Login from "./components/login/login";
+
+const loginDetails = {
+  name: "yoyo",
+  password: "1234"
+};
 
 class App extends Component {
   state = {
     user: {
-      name: "yoyo",
-      password: "1234",
-      isAuth: "false"
+      isAuth: false
     }
   };
 
   loginAuth = (e, user) => {
     e.preventDefault();
-    console.log(user);
-    let name = this.state.user.name === user.name;
-    let password = this.state.user.password === user.password;
-    console.log(this.state.user.name, user.name, password);
+    let name = loginDetails.name === user.name;
+    let password = loginDetails.password === user.password;
     if (name && password) {
-      console.log("vi");
-      this.setState(
-        {
-          user: { isAuth: "true" }
-        },
-        console.log(this.state.user.isAuth)
-      );
+      this.setState({
+        user: {
+          isAuth: true
+        }
+      });
     }
+  };
+
+  toggleAuth = () => {
+    this.setState({
+      user: {
+        isAuth: !this.state.user.isAuth
+      }
+    });
   };
 
   render() {
     return (
-      <div className="App">
+      <Router>
         <header className="App-header ">
           <i className="fa fa-check-square App-logo " aria-hidden="true" />
           <h1>To Do</h1>
         </header>
-        <p>Please login to continue.</p>
-
-        <Router>
-          <Route
-            path="/"
-            render={props => (
-              <Login
-                {...props}
-                user={this.state.user}
-                loginAuth={this.loginAuth}
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Login
+              loginAuth={this.loginAuth}
+              isUserAuthed={this.state.user.isAuth}
+            />
+          )}
+        />
+        <Route
+          path="/todo"
+          render={() =>
+            this.state.user.isAuth ? (
+              <Todo
+                toggleAuth={this.toggleAuth}
+                isUserAuthed={this.state.user.isAuth}
               />
-            )}
-          />
-          <Route
-            path="/todo"
-            component={Todo}
-            // render={props =>
-            //   this.state.isAuth ? <Todo /> : <Redirect to="/" />
-            // }
-          />
-        </Router>
-      </div>
+            ) : (
+              <Redirect to="/" />
+            )
+          }
+        />
+      </Router>
     );
   }
 }
