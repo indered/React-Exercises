@@ -6,7 +6,7 @@ class Dishlist extends Component {
     newDish: {}
   };
   handleChange = event => {
-    let newDish = {};
+    let newDish = { ...this.state.newDish };
     newDish[event.target.name] = event.target.value;
 
     this.setState({

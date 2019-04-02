@@ -1,0 +1,23 @@
+form {
+  width: 80%;
+  margin: 40px;
+  text-align: left;
+  font-weight: 600;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+form label {
+  display: block;
+}
+form input {
+  margin-bottom: 20px;
+  width: 360px;
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 10px;
+  outline: none;
+  border: 1px solid rgb(150, 144, 144);
+}
+button {
+  display: block;
+}
