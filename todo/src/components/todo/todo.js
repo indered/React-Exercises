@@ -40,6 +40,7 @@ class Todo extends Component {
     else {
       let tasks = this.state.tasks;
       let taskIndex = this.state.edit.taskIndex;
+      e.target.value = tasks[taskIndex];
       tasks[taskIndex] = e.target.value;
       this.setState({
         tasks

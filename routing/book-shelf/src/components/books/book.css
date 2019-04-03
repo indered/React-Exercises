@@ -1,0 +1,99 @@
+#container {
+  background: #282c34;
+}
+
+#book {
+  background: #282c34;
+}
+
+#book-details {
+  margin: 30px auto;
+}
+.desc-headings {
+  margin-bottom: 5px;
+  color: #afb7c7;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#short-desc {
+  margin-top: 5px;
+}
+
+span {
+  color: white;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#book-img {
+  width: 25%;
+  margin: 0 25px 25px 0;
+}
+
+#short-details {
+  display: inline-block;
+  margin: 0 50px;
+  vertical-align: top;
+  width: 40%;
+}
+
+.book-title {
+  font-size: 25px;
+  display: inline-block;
+  padding-top: 18px;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  color: white;
+}
+
+.logout {
+  float: right;
+  margin-top: 40px;
+  background: rgb(134, 137, 138);
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 19px;
+  color: #0e121a;
+  font-weight: 600;
+  transition: background-color 0.5s;
+}
+.logout:hover {
+  background: rgb(46, 54, 80);
+  border: 1px solid rgb(134, 137, 138);
+  color: rgb(190, 197, 199);
+}
+.book-list {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  height: 250px;
+  width: 200px;
+  padding: 20px;
+  cursor: pointer;
+}
+.card h2 {
+  font-size: 15px;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#long-desc {
+  padding-bottom: 20px;
+}
+#long-desc h4 {
+  color: #afb7c7;
+  font-size: 20px;
+  font-weight: 400;
+}
