@@ -44,6 +44,7 @@ span {
   font-size: 25px;
   display: inline-block;
   padding-top: 18px;
+  width: 50%;
 }
 
 .wrapper {
@@ -59,7 +60,7 @@ span {
   border: none;
   cursor: pointer;
   border-radius: 20px;
-  padding: 5px 19px;
+  padding: 6px 19px;
   color: #0e121a;
   font-weight: 600;
   transition: background-color 0.5s;
@@ -96,4 +97,31 @@ span {
   color: #afb7c7;
   font-size: 20px;
   font-weight: 400;
+}
+
+.back {
+  text-decoration: none;
+  color: inherit;
+  font-size: 15px;
+  background: rgb(134, 137, 138);
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 19px;
+  color: #0e121a;
+  font-weight: 600;
+  transition: background-color 0.5s;
+}
+
+.back-icon {
+  color: #274e9c;
+  font-size: 20px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.back:hover {
+  background: rgb(46, 54, 80);
+  border: 1px solid rgb(134, 137, 138);
+  color: rgb(190, 197, 199);
 }

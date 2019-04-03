@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import "./book.css";
+import { Link } from "react-router-dom";
 
 export default class Book extends Component {
   render() {
     let {
       bookList,
-
       match: {
         params: { id }
       }
     } = this.props;
-    console.log(id);
+
     return (
       <div id="book">
         <div className="head wrapper">
           <h1 className="book-title">{bookList[id].title}</h1>
+          <Link className="back" to="/book-list">
+            <i className="fas fa-long-arrow-alt-left back-icon" /> Back to shelf
+          </Link>
           <button className="logout" onClick={this.props.toggleAuth}>
             Logout
           </button>
