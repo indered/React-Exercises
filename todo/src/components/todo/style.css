@@ -113,6 +113,7 @@ tr:nth-child(odd) {
 }
 td {
   vertical-align: -7px;
+  padding: 0 5px;
 }
 
 .task {

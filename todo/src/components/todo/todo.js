@@ -98,7 +98,7 @@ class Todo extends Component {
                     placeholder="Enter task"
                     onChange={this.handleChange}
                   />
-                  <input type="submit" />
+                  <input type="submit" value="Save" />
                 </form>
               );
           })()}
