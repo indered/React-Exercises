@@ -13,16 +13,13 @@ class Todo extends Component {
 
   showAddForm = (action, i) => {
     if (action === "edit")
-      this.setState(
-        {
-          showAddForm: true,
-          edit: {
-            status: true,
-            taskIndex: i
-          }
-        },
-        () => console.log(this.state)
-      );
+      this.setState({
+        showAddForm: true,
+        edit: {
+          status: true,
+          taskIndex: i
+        }
+      });
     else
       this.setState(
         {
@@ -40,7 +37,6 @@ class Todo extends Component {
     else {
       let tasks = this.state.tasks;
       let taskIndex = this.state.edit.taskIndex;
-      e.target.value = tasks[taskIndex];
       tasks[taskIndex] = e.target.value;
       this.setState({
         tasks
