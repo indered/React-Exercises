@@ -1,15 +1,24 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import Items from "./components/items";
 import "./App.css";
-import Cart from "./";
+import Cart from "./components/cart";
+
 class App extends Component {
+  add = () => {
+    this.props.add();
+  };
+
   render() {
     return (
       <div className="App">
-        <Cart />
+        <header className="header">TTN MART</header>
+        <section>
+          <Items className="items" />
+
+          <Cart className="cart" />
+        </section>
       </div>
     );
   }
 }
-
 export default App;

@@ -1,0 +1,17 @@
+.in-stock-btn {
+  background: rgb(173, 173, 173);
+  border: none;
+  outline: none;
+  padding: 9px 12px;
+  font-weight: 600;
+}
+
+.cart {
+  width: 50%;
+}
+
+.out-stock-btn {
+  background: #fff;
+  border: 1px solid #000;
+  color: rgb(97, 97, 97);
+}

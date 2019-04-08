@@ -15,7 +15,7 @@ const products = [
   },
   {
     id: "830b40cb-1b66-4253-a388-bc55cef840da",
-    name: "Longos - Lasagna Beef",
+    name: "LongosLasagna Beef",
     quantity: 34,
     image: "https://picsum.photos/200/200/?image=16",
     price: 92

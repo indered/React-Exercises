@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ImagesJson from "../../images";
+import ImagesJson from "../../images.json";
 import { BrandsList, Heading, P, Li } from "./style";
 
 export default class BrandsInFocus extends Component {

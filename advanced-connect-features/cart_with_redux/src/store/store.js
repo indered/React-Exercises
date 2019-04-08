@@ -1,4 +1,10 @@
 import { createStore } from "redux";
-import rootReducer from "../reducers/reducer";
+import { cart, products } from "../reducers/reducer";
+import { combineReducers } from "redux";
+import logger from "../middleware/logger";
 
-export const store = createStore(rootReducer);
+const rootReducer = combineReducers({
+  cart,
+  products
+});
+export const store = createStore(rootReducer, logger);
