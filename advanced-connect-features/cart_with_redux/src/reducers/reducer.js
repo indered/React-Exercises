@@ -7,7 +7,6 @@ const cartState = {
       name: "",
       price: "",
       qty: "",
-
       amount: ""
     }
   ],
@@ -48,6 +47,16 @@ const cart = (state = cartState, action) => {
       let total = 0;
       products.map(p => (total += p.amount));
       return { ...state, products, total };
+    }
+
+    case "PLUS_ITEM": {
+      const index = state.products.findIndex(p => p.id === action.id);
+      const products = state.products;
+      products[index].qty++;
+      products[index].amount += products[index].price;
+      let total = 0;
+      products.map(p => (total += p.amount));
+      return { products, total };
     }
 
     case "MINUS_ITEM": {
@@ -91,6 +100,13 @@ const products = (state = productState, action) => {
       }
     }
 
+    case "MINUS_ITEM": {
+      const product = { ...state.find(p => p.id === action.product.id) };
+      product.quantity += 1;
+      const products = state.filter(p => p.id !== action.product.id);
+      return [...products, product];
+    }
+
     case "REMOVE_FROM_CART": {
       const index = { ...state.findIndex(p => p.id === action.id) };
       const product = state[index];
@@ -105,7 +121,7 @@ const products = (state = productState, action) => {
   }
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   cart,
   products
 });
