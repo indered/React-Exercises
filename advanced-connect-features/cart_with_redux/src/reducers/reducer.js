@@ -6,7 +6,8 @@ const cartState = {
 };
 
 const productState = [...sampleProducts];
-const originalState = [...sampleProducts];
+
+//cart reducer
 
 const cart = (state = cartState, action) => {
   switch (action.type) {
@@ -21,11 +22,10 @@ const cart = (state = cartState, action) => {
         products.map(p => (total += p.amt));
         return { products, total };
       } else {
-        const product = state.products[index];
-        product.qty += 1;
-        product.amt += product.price;
-        let products = state.products.filter(p => p.id !== action.product.id);
-        products = [...products, product];
+        const products = [...state.products];
+        products[index].qty += 1;
+        products[index].amt += products[index].price;
+
         products.map(p => (total += p.amt));
         return { products, total };
       }
@@ -44,7 +44,9 @@ const cart = (state = cartState, action) => {
 
     case "PLUS_ITEM": {
       const index = state.products.findIndex(p => p.id === action.id);
+
       const products = [...state.products];
+
       products[index].qty++;
       products[index].amt += products[index].price;
       let total = 0;
@@ -55,9 +57,9 @@ const cart = (state = cartState, action) => {
     case "MINUS_ITEM": {
       const index = state.products.findIndex(p => p.id === action.id);
       const products = [...state.products];
-      if (products[index.quantity !== 0]) {
+      if (products[index].quantity !== 0) {
         products[index].qty--;
-        products[index].amount -= products[index].price;
+        products[index].amt -= products[index].price;
         let total = 0;
         products.map(p => (total += p.amount));
         return { ...state, products, total };
@@ -72,13 +74,22 @@ const cart = (state = cartState, action) => {
   }
 };
 
+//products reducer
+
 const products = (state = productState, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
       const products = [...state];
       const index = products.findIndex(p => p.id === action.product.id);
-      products[index].quantity -= 1;
-      return [...products];
+
+      return [
+        ...products.slice(0, index),
+        {
+          ...products[index],
+          quantity: products[index].quantity - 1
+        },
+        ...products.slice(index + 1)
+      ];
     }
 
     case "PLUS_ITEM": {
@@ -87,9 +98,14 @@ const products = (state = productState, action) => {
       const products = [...state];
 
       if (products[index].quantity !== 0) {
-        products[index].quantity -= 1;
-
-        return [...products];
+        return [
+          ...products.slice(0, index),
+          {
+            ...products[index],
+            quantity: products[index].quantity - 1
+          },
+          ...products.slice(index + 1)
+        ];
       } else {
         console.log("no more items to add");
         return state;
@@ -97,16 +113,24 @@ const products = (state = productState, action) => {
     }
 
     case "MINUS_ITEM": {
-      const product = { ...state.find(p => p.id === action.product.id) };
-      product.quantity += 1;
-      const products = state.filter(p => p.id !== action.product.id);
-      return [...products, product];
+      const index = state.findIndex(p => p.id === action.id);
+
+      const products = [...state];
+
+      return [
+        ...products.slice(0, index),
+        {
+          ...products[index],
+          quantity: products[index].quantity + 1
+        },
+        ...products.slice(index + 1)
+      ];
     }
 
     case "REMOVE_FROM_CART": {
       const index = state.findIndex(p => p.id === action.id);
       const products = [...state];
-      products[index].quantity = originalState[index].quantity;
+      products[index].quantity = productState[index].quantity;
       return [...products];
     }
 
