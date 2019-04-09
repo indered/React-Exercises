@@ -38,7 +38,7 @@ const cart = (state = cartState, action) => {
         ...state.products.slice(index + 1)
       ];
       let total = 0;
-      products.map(p => (total += p.amount));
+      products.map(p => (total += p.amt));
       return { ...state, products, total };
     }
 
@@ -61,7 +61,7 @@ const cart = (state = cartState, action) => {
         products[index].qty--;
         products[index].amt -= products[index].price;
         let total = 0;
-        products.map(p => (total += p.amount));
+        products.map(p => (total += p.amt));
         return { ...state, products, total };
       } else {
         return state;

@@ -14,7 +14,7 @@ class Cart extends Component {
   };
   minus = id => {
     //checking if the product quantity is above 0 is the in cart
-    const product = this.props.cart.products.find(p => p.id === id);
+    const product = this.props.products.find(p => p.id === id);
     console.log(product);
     if (product.qty) this.props.minus(id);
   };
@@ -23,29 +23,40 @@ class Cart extends Component {
     return (
       <div className="cart">
         <h1>Your Cart</h1>
+        {(() => {
+          if (this.props.products.length)
+            return (
+              <span className="total">
+                <h6 id="gt-head">Grand Total</h6>
+                <h5 id="gt">{this.props.total}</h5>
+              </span>
+            );
+        })()}
 
         <ul className="cart-items">
           {this.props.products.map(item => (
             <li>
               <h3>{item.name}</h3>
-              <span>${item.price}</span>x
-              <i
-                className="fas fa-minus-circle"
-                id="minus"
-                onClick={() => this.minus(item.id)}
-              />
-              <span>{item.qty}</span>
-              <i
-                className="fas fa-plus-circle"
-                id="plus"
-                onClick={() => this.plus(item.id)}
-              />
-              <span>{item.amt}</span>
-              <i
-                className="fas fa-times-circle"
-                id="cross"
-                onClick={() => this.remove(item.id)}
-              />
+              <p>
+                <span>${item.price}</span>x
+                <i
+                  className="fas fa-minus-circle"
+                  id="minus"
+                  onClick={() => this.minus(item.id)}
+                />
+                <span className="qty">{item.qty}</span>
+                <i
+                  className="fas fa-plus-circle"
+                  id="plus"
+                  onClick={() => this.plus(item.id)}
+                />
+                <span className="amt">{item.amt}</span>
+                <i
+                  className="fas fa-times-circle"
+                  id="cross"
+                  onClick={() => this.remove(item.id)}
+                />
+              </p>
             </li>
           ))}
         </ul>

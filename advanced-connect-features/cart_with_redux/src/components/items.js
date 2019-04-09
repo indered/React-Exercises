@@ -25,17 +25,20 @@ class Items extends Component {
       <ul className="items-list">
         {this.props.products.map((item, index) => (
           <li>
-            <img src={item.image} alt="itm" />
+            <img src={item.image} alt="itm" className="img" />
             <h3>{item.name}</h3>
             <h4>${item.price}</h4>
             {(() => {
               if (item.quantity !== 0)
                 return (
                   <Fragment>
-                    <p>In stock({item.quantity})</p>
+                    <p>
+                      In stock(
+                      <h5>{item.quantity}</h5>)
+                    </p>
                     <button
                       onClick={() => this.add(item)}
-                      className="in-cart-btn"
+                      className="in-stock-btn"
                     >
                       Add to cart
                     </button>
@@ -44,7 +47,9 @@ class Items extends Component {
               else
                 return (
                   <Fragment>
-                    <p>Out of stock({item.quantity})</p>
+                    <p>
+                      Out of stock(<h5>{item.quantity}</h5>)
+                    </p>
                     <button className="out-stock-btn">Add to cart</button>
                   </Fragment>
                 );

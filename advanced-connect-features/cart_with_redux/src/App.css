@@ -11,22 +11,3 @@
 section {
   display: flex;
 }
-
-.items-list {
-  margin-top: 40px;
-  width: 50%;
-
-  margin: 20px auto;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0;
-  flex-wrap: wrap;
-  list-style-type: none;
-}
-
-.items-list li {
-  width: 30%;
-  height: 370px;
-  margin: 40px 20px;
-  justify-content: space-around;
-}
