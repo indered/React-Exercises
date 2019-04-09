@@ -6,7 +6,7 @@
 
 .cart {
   width: 50%;
-  height: 500px;
+  height: 630px;
   position: relative;
   overflow: scroll;
   margin-left: 10px;
@@ -28,6 +28,9 @@
 .cart-items li {
   border-bottom: 1px solid #000;
   width: 90%;
+}
+.cart-items li:last-child {
+  border: none;
 }
 
 .cart-items h3 {
@@ -57,7 +60,7 @@
   font-size: 17px;
   display: inline;
   position: absolute;
-  top: 30px;
+  top: 43px;
   color: rgb(105, 99, 11);
   left: 35px;
 }
@@ -66,8 +69,16 @@
   position: absolute;
   font-size: 17px;
   color: rgb(9, 31, 78);
-  top: 30px;
+  top: 45px;
   right: 30px;
+}
+
+.total {
+  display: inline-block;
+  height: 30px;
+  width: 90%;
+  border-radius: 5px;
+  background: rgb(224, 223, 223);
 }
 
 .cart .amt {
@@ -142,6 +153,7 @@
   height: 290px;
   justify-content: space-around;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .items-list h3 {

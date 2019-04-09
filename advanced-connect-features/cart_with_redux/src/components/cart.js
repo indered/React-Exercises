@@ -28,7 +28,7 @@ class Cart extends Component {
             return (
               <span className="total">
                 <h6 id="gt-head">Grand Total</h6>
-                <h5 id="gt">{this.props.total}</h5>
+                <h5 id="gt">${this.props.total}</h5>
               </span>
             );
         })()}
