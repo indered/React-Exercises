@@ -11,7 +11,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="header">TTN MART</header>
+        <header className="header">
+          <h1>TTN MART</h1>
+        </header>
         <section>
           <Items className="items" />
 
